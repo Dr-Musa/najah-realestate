@@ -17,25 +17,21 @@ concurrency:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
 
       - name: Setup Node
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v4
         with:
-          node-version: "lts/*"
+          node-version: "20"
 
       - name: Install dependencies
         run: npm install --legacy-peer-deps
 
-      # ✅ يبني بـ Vite ويجبر المخرجات داخل dist
-      - name: Build (force dist)
-        run: npx vite build --outDir dist
+      - name: Build
+        run: npm run build
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
