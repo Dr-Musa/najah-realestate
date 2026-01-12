@@ -1,11 +1,28 @@
-<div align="center">
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+# 🏗️ منصة وسطاء النجاح العقارية - دليل التدشين
 
-  <h1>Built with AI Studio</h2>
+أهلاً بك يا **Musa**. هذا هو مشروعك العقاري المتكامل جاهز للرفع على دومين خاص.
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+## 🚀 خطوات الرفع السريع (Vercel)
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
+1. **GitHub**: ارفع ملفات المشروع على حسابك في GitHub.
+2. **Vercel**: اذهب إلى [Vercel.com](https://vercel.com) وسجل دخولك عبر GitHub.
+3. **Import**: اختر مستودع المشروع (Repository).
+4. **Environment Variables**: 
+   - انتقل إلى الإعدادات (Settings) > Environment Variables.
+   - أضف مفتاحاً جديداً باسم `API_KEY`.
+   - ضع قيمة مفتاح Gemini API الخاص بك.
+5. **Deploy**: اضغط على Deploy.
 
-</div>
+## 🌐 ربط الدومين الخاص
+بعد انتهاء الرفع، اذهب إلى تبويب **Domains** في Vercel وأضف الدومين الخاص بك (مثلاً: `wosata-najah.com`). اتبع تعليمات الـ DNS (A Record & CNAME) في لوحة تحكم الدومين الخاص بك.
+
+## 🛠️ التقنيات المستخدمة
+- **Frontend**: React 19 (ESM Mode).
+- **Styling**: Tailwind CSS.
+- **Maps**: Leaflet JS.
+- **AI Engine**: Google Gemini API (Search & Trust Scoring).
+- **Icons**: Lucide React.
+
+## 📞 الدعم الفني
+هذا المشروع مصمم ليعمل كـ Single Page Application (SPA) عالي الأداء ولا يتطلب سيرفرات معقدة، مما يجعله سريعاً جداً في التصفح داخل المملكة.

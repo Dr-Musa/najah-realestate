@@ -1,0 +1,7 @@
+{
+  "name": "Copy of موسى Wosata Al-Najah Real Estate موسى",
+  "description": "A comprehensive Saudi real estate platform featuring advanced search, CRM, and a proprietary Data Trust Score system.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}
