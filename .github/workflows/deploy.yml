@@ -17,6 +17,9 @@ concurrency:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
       - name: Checkout
@@ -33,11 +36,16 @@ jobs:
       - name: Build
         run: npm run build
 
+      # (اختياري لكنه ممتاز) حل صفحات SPA لو فتحت رابط داخلي وطلع 404
+      - name: SPA fallback (optional)
+        run: |
+          if [ -f dist/index.html ]; then cp dist/index.html dist/404.html; fi
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v3
         with:
           path: "./dist"
 
