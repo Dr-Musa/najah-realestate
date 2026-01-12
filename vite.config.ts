@@ -16,6 +16,12 @@ export default defineConfig(({ mode }) => {
     // مهم لـ GitHub Pages لأن مشروعك داخل /najah-realestate/
     base: '/najah-realestate/',
 
+    // ✅ أجبر Vite يطلع مخرجاته في dist (عشان GitHub Actions ما يفشل)
+    build: {
+      outDir: 'dist',
+      sourcemap: false,
+    },
+
     define: {
       // fallback آمن لو ما كان فيه GEMINI_API_KEY وقت الـ build على GitHub Actions
       'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY ?? ''),
