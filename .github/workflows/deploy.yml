@@ -33,28 +33,9 @@ jobs:
       - name: Install dependencies
         run: npm install --legacy-peer-deps
 
-      - name: Build
-        run: npm run build
-
-      # ✅ تشخيص: يطبع لك أين خرجت ملفات البناء
-      - name: Show output folders
-        run: |
-          echo "=== ROOT ==="
-          ls -la
-          echo "=== dist ==="
-          ls -la dist || true
-          echo "=== build ==="
-          ls -la build || true
-          echo "=== docs ==="
-          ls -la docs || true
-
-      # ✅ تأكيد: لازم يكون فيه dist وإلا يوقف ويعطيك رسالة واضحة
-      - name: Ensure dist exists
-        run: |
-          if [ ! -d "dist" ]; then
-            echo "ERROR: dist folder not found. Check the 'Show output folders' step to see where the build output is."
-            exit 1
-          fi
+      # ✅ يبني بـ Vite ويجبر المخرجات داخل dist
+      - name: Build (force dist)
+        run: npx vite build --outDir dist
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
