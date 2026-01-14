@@ -7,22 +7,13 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [react()],
-
-    // مهم لـ GitHub Pages لأن مشروعك داخل /najah-realestate/
     base: "/najah-realestate/",
-
-    // تأكيد مجلد الإخراج
     build: {
-      outDir: "dist",
-      emptyOutDir: true
+      outDir: "dist"
     },
-
     define: {
-      // fallback آمن لو ما كان فيه GEMINI_API_KEY وقت الـ build
-      "process.env.API_KEY": JSON.stringify(env.GEMINI_API_KEY ?? ""),
       "process.env.GEMINI_API_KEY": JSON.stringify(env.GEMINI_API_KEY ?? "")
     },
-
     resolve: {
       alias: {
         "@": path.resolve(__dirname, ".")
@@ -30,4 +21,3 @@ export default defineConfig(({ mode }) => {
     }
   };
 });
- 
