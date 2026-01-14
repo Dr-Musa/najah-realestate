@@ -1,31 +1,26 @@
-import { defineConfig, loadEnv } from 'vite';
+import path from 'path';
+import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
-import { fileURLToPath } from 'node:url';
 
-export default defineConfig(({ mode }) => {
-  const env = loadEnv(mode, process.cwd(), '');
+export default defineConfig({
+  plugins: [react()],
 
-  return {
-    plugins: [react()],
+  // مهم جدًا لمشروع GitHub Pages داخل repo name
+  base: '/najah-realestate/',
 
-    // مهم لـ GitHub Pages لأن المشروع داخل /najah-realestate/
-    base: '/najah-realestate/',
+  build: {
+    outDir: 'dist',
+    emptyOutDir: true,
+  },
 
-    build: {
-      outDir: 'dist',
-      emptyOutDir: true
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, '.'),
     },
+  },
 
-    // لو كودك يستعمل process.env.GEMINI_API_KEY
-    define: {
-      'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY ?? env.VITE_GEMINI_API_KEY ?? ''),
-      'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY ?? env.VITE_GEMINI_API_KEY ?? '')
-    },
-
-    resolve: {
-      alias: {
-        '@': fileURLToPath(new URL('.', import.meta.url))
-      }
-    }
-  };
+  server: {
+    port: 3000,
+    host: true,
+  },
 });
