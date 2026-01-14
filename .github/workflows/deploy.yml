@@ -2,7 +2,7 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
@@ -36,10 +36,13 @@ jobs:
       - name: Build
         run: npm run build
 
-      # (اختياري لكنه ممتاز) حل صفحات SPA لو فتحت رابط داخلي وطلع 404
-      - name: SPA fallback (optional)
+      - name: Ensure dist exists
         run: |
-          if [ -f dist/index.html ]; then cp dist/index.html dist/404.html; fi
+          if [ ! -d "dist" ]; then
+            echo "dist folder not found!"
+            ls -la
+            exit 1
+          fi
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
