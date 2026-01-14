@@ -1,106 +1,139 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>وسطاء النجاح العقارية | Wosata Al-Najah</title>
+
+    <!-- Tailwind (CDN) -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
-    <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css" />
+
+    <!-- Font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Leaflet CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.css"
+    />
+
     <style>
-        body {
-            font-family: 'Tajawal', sans-serif;
-            background-color: #f8fafc;
-        }
-        <div id="root"></div>
-<script type="module" src="/index.tsx"></script>
+      body {
+        font-family: "Tajawal", sans-serif;
+        background-color: #f8fafc;
+      }
 
-        /* تحسين مظهر الخريطة والمؤشرات */
-        .custom-price-marker {
-            background: none !important;
-            border: none !important;
-        }
-        .price-tag {
-            background-color: #10b981;
-            color: white;
-            padding: 4px 10px;
-            border-radius: 12px;
-            font-weight: 800;
-            font-size: 11px;
-            border: 2px solid #1e293b;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            white-space: nowrap;
-            transition: all 0.3s ease;
-        }
-        .price-tag:hover {
-            transform: scale(1.1);
-            background-color: #059669;
-            z-index: 1000 !important;
-        }
-        .leaflet-popup-content-wrapper {
-            border-radius: 20px !important;
-            padding: 0 !important;
-            overflow: hidden;
-            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.5) !important;
-            background: #0f172a !important;
-            color: white !important;
-        }
-        .leaflet-popup-content {
-            margin: 0 !important;
-            width: 220px !important;
-        }
-        .leaflet-container {
-            font-family: 'Tajawal', sans-serif !important;
-            background: #0f172a !important;
-        }
-        .leaflet-popup-tip {
-            background: #0f172a !important;
-        }
-        /* Marker Cluster Customization */
-        .marker-cluster-small { background-color: rgba(16, 185, 129, 0.6); }
-        .marker-cluster-small div { background-color: rgba(16, 185, 129, 0.9); color: white; font-weight: bold; }
-        .marker-cluster-medium { background-color: rgba(245, 158, 11, 0.6); }
-        .marker-cluster-medium div { background-color: rgba(245, 158, 11, 0.9); color: white; font-weight: bold; }
-        .marker-cluster-large { background-color: rgba(239, 68, 68, 0.6); }
-        .marker-cluster-large div { background-color: rgba(239, 68, 68, 0.9); color: white; font-weight: bold; }
+      /* تحسين مظهر الخريطة والمؤشرات */
+      .custom-price-marker {
+        background: none !important;
+        border: none !important;
+      }
+      .price-tag {
+        background-color: #10b981;
+        color: white;
+        padding: 4px 10px;
+        border-radius: 12px;
+        font-weight: 800;
+        font-size: 11px;
+        border: 2px solid #1e293b;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        white-space: nowrap;
+        transition: all 0.3s ease;
+      }
+      .price-tag:hover {
+        transform: scale(1.1);
+        background-color: #059669;
+        z-index: 1000 !important;
+      }
+      .leaflet-popup-content-wrapper {
+        border-radius: 20px !important;
+        padding: 0 !important;
+        overflow: hidden;
+        box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.5) !important;
+        background: #0f172a !important;
+        color: white !important;
+      }
+      .leaflet-popup-content {
+        margin: 0 !important;
+        width: 220px !important;
+      }
+      .leaflet-container {
+        font-family: "Tajawal", sans-serif !important;
+        background: #0f172a !important;
+      }
+      .leaflet-popup-tip {
+        background: #0f172a !important;
+      }
 
-        /* Leaflet Draw Custom Styles */
-        .leaflet-draw-toolbar a {
-            background-color: #1e293b !important;
-            border-color: #334155 !important;
-            color: white !important;
-        }
-        .leaflet-draw-toolbar a:hover {
-            background-color: #10b981 !important;
-        }
-        .leaflet-draw-actions {
-            right: 30px !important;
-            left: auto !important;
-        }
-        .leaflet-draw-actions li:first-child a {
-            border-radius: 0 4px 4px 0 !important;
-        }
-        .leaflet-draw-actions li:last-child a {
-            border-radius: 4px 0 0 4px !important;
-        }
+      /* Marker Cluster Customization */
+      .marker-cluster-small {
+        background-color: rgba(16, 185, 129, 0.6);
+      }
+      .marker-cluster-small div {
+        background-color: rgba(16, 185, 129, 0.9);
+        color: white;
+        font-weight: bold;
+      }
+      .marker-cluster-medium {
+        background-color: rgba(245, 158, 11, 0.6);
+      }
+      .marker-cluster-medium div {
+        background-color: rgba(245, 158, 11, 0.9);
+        color: white;
+        font-weight: bold;
+      }
+      .marker-cluster-large {
+        background-color: rgba(239, 68, 68, 0.6);
+      }
+      .marker-cluster-large div {
+        background-color: rgba(239, 68, 68, 0.9);
+        color: white;
+        font-weight: bold;
+      }
+
+      /* Leaflet Draw Custom Styles */
+      .leaflet-draw-toolbar a {
+        background-color: #1e293b !important;
+        border-color: #334155 !important;
+        color: white !important;
+      }
+      .leaflet-draw-toolbar a:hover {
+        background-color: #10b981 !important;
+      }
+      .leaflet-draw-actions {
+        right: 30px !important;
+        left: auto !important;
+      }
+      .leaflet-draw-actions li:first-child a {
+        border-radius: 0 4px 4px 0 !important;
+      }
+      .leaflet-draw-actions li:last-child a {
+        border-radius: 4px 0 0 4px !important;
+      }
     </style>
-<script type="importmap">
-{
-  "imports": {
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "react": "https://esm.sh/react@^19.2.3",
-    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
-    "@google/genai": "https://esm.sh/@google/genai@^1.34.0",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
-  }
-}
-</script>
-</head>
-<body>
+  </head>
+
+  <body>
     <div id="root"></div>
-</body>
+
+    <!-- Vite entry (لا تضعه داخل style) -->
+    <script type="module" src="/index.tsx"></script>
+  </body>
 </html>
